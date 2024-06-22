@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.ProductName %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <header class="Header">
+        <a href="/home" class="HeaderLogo">MaisonD'art</a>
+        <nav class="HeaderNav">
+            <a href="/shop" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <a href="/cart">
+                            <div class="Icon CartIcon"></div>
+            </a>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+    <div class="main-body">
+        <div class="body-page">
+            <div class="product-page">
+                <div class="product-box">   
+                    <div class="product-image">
+                        <img src="<%= product.ProductImage %>" class="image" alt="<%= product.ProductName %>">
+                    </div>
+                    <div class="product-info">
+                        <div class="info-ruler">
+                            <div class="product-name">
+                                <div class="name"><%= product.ProductName %></div>
+                                <div class="heart"></div>
+                            </div>
+                            <div class="product-artist">By <%= product.ProductArtist %></div>
+                            <div class="product-price">Rp. <%= product.ProductPrice %></div>
+                            <div class="product-line"></div>
+                            <div class="product-detail">
+                                <h3 class="detail">Details</h3>
+                                <p class="text"><%= product.ProductDescription %></p>
+                            </div>
+                            <div class="product-shipping">
+                                <h3 class="shipping">Shipping</h3>
+                                <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in metus non risus malesuada accumsan a sit amet nisi. Aliquam varius consectetur sem, nec euismod metus aliquam eu. Vivamus posuere enim ut purus imperdiet aliquam. Vivamus congue ornare malesuada. Proin sagittis ligula et turpis viverra laoreet. Morbi euismod tempor nibh vel congue. Integer eleifend euismod tempor. Fusce sagittis nisl a finibus fringilla. Fusce rhoncus fringilla aliquet. Suspendisse efficitur mauris ipsum, ut sollicitudin felis pharetra id.</p>
+                            </div>
+                            <button class="button-add" onclick="addToCart('<%= product.ProductID %>', '<%= product.ArtistID %>')">ADD TO CART</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-desc">
+                    <div class="desc-ruler">
+                        <div class="about">About the art</div>
+                        <div class="desc">Description</div>
+                        <p class="text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in metus non risus malesuada accumsan a sit amet nisi. Aliquam varius consectetur sem, nec euismod metus aliquam eu. Vivamus posuere enim ut purus imperdiet aliquam. Vivamus congue ornare malesuada. Proin sagittis ligula et turpis viverra laoreet. Morbi euismod tempor nibh vel congue. Integer eleifend euismod tempor. Fusce sagittis nisl a finibus fringilla. Fusce rhoncus fringilla aliquet. Suspendisse efficitur mauris ipsum, ut sollicitudin felis pharetra id.
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam congue nisl nunc. Nunc fermentum ipsum in erat posuere sagittis. Integer non sapien at mauris mollis hendrerit. Nulla non sem magna. In molestie placerat massa id bibendum. Integer libero ligula, pretium vitae lobortis quis, tincidunt id metus. Ut imperdiet libero non justo pellentesque viverra. Sed accumsan sem in lectus ultrices luctus. Pellentesque ullamcorper elit eu pretium vehicula. Maecenas tempus lacus aliquet augue posuere ornare. Maecenas rhoncus ante ut elit aliquam, accumsan sodales nisl vehicula. Sed nisl justo, auctor in quam in, lacinia placerat lectus. Etiam viverra vehicula tellus vel cursus.
+                        </p>
+                        <div class="artist-profile">Artist Profile</div>
+                        <div class="profile">
+                            <img src="<%= product.ArtistImage %>" class="profile-image" alt="">
+                            <div class="artist-info">
+                                <div class="artist-name"><%= product.ArtistName %></div>
+                                <p class="text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in metus non risus malesuada accumsan a sit amet nisi. Aliquam varius consectetur sem, nec euismod metus aliquam eu. Vivamus posuere enim ut purus imperdiet aliquam. Vivamus congue ornare malesuada. Proin sagittis ligula et turpis viverra laoreet. Morbi euismod tempor nibh vel congue. Integer eleifend euismod tempor. Fusce sagittis nisl a finibus fringilla. Fusce rhoncus fringilla aliquet. Suspendisse efficitur mauris ipsum, ut sollicitudin felis pharetra id.
+                                </p>
+                                <button class="button-view-profile" onclick="window.location.href='/artist/<%= product.ArtistID %>'">View artist profile page</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function addToCart(productId, artistId) {
+            const userId = 1; // Replace this with the actual user ID from your authentication logic
+
+            fetch('/add-to-cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ productId, userId, artistId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                Swal.fire({
+                    title: 'Success',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonColor: '#450A0A'
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to add product to cart.',
+                    icon: 'error'
+                });
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>

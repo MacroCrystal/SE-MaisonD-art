@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/cart.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
+    <title>Cart</title>
+</head>
+<body>
+    <header class="Header">
+        <a href="/home" class="HeaderLogo">MaisonD'art</a>
+        <nav class="HeaderNav">
+            <a href="/shop" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <a href="/cart">
+                <div class="Icon CartIcon"></div>
+            </a>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+    <div class="body-page">
+        <div class="main-page">
+            <h1 class="cart-text">Cart</h1>
+            <div class="ruler">
+                <div class="item-ruler">
+                    <% Object.keys(groupedCartItems).forEach(artistID => { %>
+                        <div class="item-box">
+                            <div class="store-info">
+                                <input type="checkbox" name="artistCheckbox" id="artist<%= artistID %>" data-artist="<%= artistID %>">
+                                <h2><%= groupedCartItems[artistID].artistName %></h2>
+                            </div>
+                            <% groupedCartItems[artistID].products.forEach(product => { %>
+                                <div class="item-info">
+                                    <input type="checkbox" name="productCheckbox" id="product<%= product.ProductID %>" data-artist="<%= artistID %>" data-productid="<%= product.ProductID %>" data-productname="<%= product.ProductName %>" data-productprice="<%= product.ProductPrice %>" data-productdescription="<%= product.ProductDescription %>">
+                                    <div class="item-image">
+                                        <img class="item-image" src="<%= product.ProductImage %>" alt="<%= product.ProductName %>">
+                                    </div>
+                                    <div class="item-detail">
+                                        <div class="item-name"><%= product.ProductName %></div>
+                                        <div class="item-desc"><%= product.ProductDescription %></div>
+                                        <div class="item-price">Rp. <%= product.ProductPrice %></div>
+                                        <button class="delete-btn" data-productid="<%= product.ProductID %>">Delete</button>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% }); %>
+                </div>
+                <div class="summary-ruler">
+                    <div class="summary-box">
+                        <div class="payment-summary">
+                            <h2>Payment Summary</h2>
+                        </div>
+                        <div class="item-section-info">
+                            <h3 class="item-section-header">Store Name</h3>
+                            <h3 class="item-section-header">Product Name</h3>
+                            <h3 class="item-section-header">Product Price</h3>
+                        </div>
+                        <div class="selected-items">
+                            <!-- Selected items will be dynamically added here -->
+                        </div>
+                        <div class="total-price">
+                            <h3 class="text-total">Total Price</h3>
+                            <h3 class="number" id="totalPrice">(number)</h3>
+                        </div>
+                        <button id="checkoutBtn">Check out Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/cart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

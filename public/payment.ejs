@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/payment.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<body>
+    <header class="Header">
+        <a href="/home" class="HeaderLogo">MaisonD'art</a>
+        <nav class="HeaderNav">
+            <a href="/shop" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <a href="/cart">
+                <div class="Icon CartIcon"></div>
+            </a>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+    <div class="body-page">
+        <div class="main-page"> 
+            <div class="payment-text">Payment</div>
+            <form id="orderForm">
+                <% Object.keys(groupedProducts).forEach(artistID => { %>
+                    <div class="store-shipping-section">
+                        <div class="store-section">
+                            <div class="store-ruler">
+                                <div class="store-name">
+                                    <h2><%= groupedProducts[artistID].artistName %></h2>
+                                </div>
+                                <% groupedProducts[artistID].products.forEach(product => { %>
+                                    <div class="store-info">
+                                        <div class="product-image">
+                                            <img class="image" src="<%= product.productImage %>" alt="<%= product.productName %>">
+                                        </div>
+                                        <div class="store-desc">
+                                            <div class="store-text"><%= product.productName %></div>
+                                            <div class="store-text"><%= product.productDesc %></div>
+                                            <div class="store-text">Rp. <%= product.productPrice %></div>
+                                            <input type="hidden" name="productIDs[]" value="<%= product.productID %>">
+                                        </div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                        <div class="shipping-section">
+                            <div class="shipping-ruler">
+                                <div class="shipping-address">
+                                    <h3>Shipping Address</h3>
+                                    <div class="dropdown">
+                                        <select name="shippingAddress" id="shippingAddress">
+                                            <option value="<%= userAddress %>"><%= userAddress %></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="shipping-type">
+                                    <h3>Shipping Type</h3>
+                                    <div class="dropdown">
+                                        <select name="shippingType" id="shippingType">
+                                            <option value="Standard">Standard</option>
+                                            <option value="Express">Express</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+                <div class="payment-section">
+                    <div class="payment-box">
+                        <div class="payment-method">
+                            <h3>Payment Method</h3>
+                            <div class="dropdown">
+                                <select name="paymentMethod" id="paymentMethod">
+                                    <option value="Card">Card</option>
+                                </select>
+                                <h4 class="card-text">All payment will be autodebit from your card, make sure u have sufficient balance</h4>
+                            </div>
+                        </div>
+                        <div class="payment-calculation">
+                            <div class="total">
+                                <h3 class="total-text">Total Price</h3>
+                                <div class="total-price">Rp. <%= totalPrice %></div>
+                            </div>
+                            <button type="button" class="order" onclick="placeOrder()">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        async function placeOrder() {
+            const form = document.getElementById('orderForm');
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/placeOrder', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        title: 'Order created!',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        confirmButtonColor: '#450A0A'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '/profile'; // Redirect to profile page
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Error placing order. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error placing order. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

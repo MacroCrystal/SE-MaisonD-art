@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Maison D'Art</title>
+    <link rel="stylesheet" href="css/home.css">
+    <script src="https://kit.fontawesome.com/fa78b663dc.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="Header">
+        <a href="/home" class="HeaderLogo">MaisonD'art</a>
+        <nav class="HeaderNav">
+            <a href="/shop" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <a href="/cart">
+                <div class="Icon CartIcon"></div>
+            </a>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+    <div class="featured-section">
+        <div class="featured-text">
+            <h2>Featured</h2>
+            <h2>This Month</h2>
+            <p>Browse Through Every Work Featured This Month</p>
+            <a href="/shop">
+                <button class="shop-now">SHOP NOW</button>
+            </a>
+        </div>
+        <div class="featured-image">
+            <img src="assets/abstract_5.jpg" alt="Featured Image">
+        </div>
+    </div>    
+    <div class="slideshow-box">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="assets/banner1.png" style="width:100%">
+                <div class="text">Caption Text</div>
+            </div>
+            <div class="mySlides fade">
+                <img src="assets/banner2.png" style="width:100%">
+                <div class="text">Caption Two</div>
+            </div>
+            <div class="mySlides fade">
+                <img src="assets/banner3.png" style="width:100%">
+                <div class="text">Caption Three</div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+        </div>
+        <br>
+        <div style="text-align:center">
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+        </div>
+    </div>
+    <section class="auction-section">
+        <div class="auction-header">
+            <div class="auction-info">
+                <h2 class="auction-title">Auction</h2>
+                <div id="timer">00 : 00</div>
+            </div>
+            <a href="/auctions">
+                <button class="view-all-btn">view all &gt;</button>
+            </a>
+        </div>
+    </section>
+    <section class="category-section">
+        <h2 class="category-title">Search By Category</h2>
+        <div class="category-section-box">
+            <div class="category-list">
+                <div class="category-box">
+                    <img src="assets/abstract_7.jpg" alt="Literature Image">
+                    <p><a href="#">Literature</a></p>
+                </div>
+                <div class="category-box">
+                    <img src="assets/abstract_1.webp" alt="Painting Image">
+                    <p><a href="#">Painting</a></p>
+                </div>
+                <div class="category-box">
+                    <img src="assets/abstract_8.png" alt="Sculpture Image">
+                    <p><a href="#">Sculpture</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="recommended-section">
+        <h2 class="recommended-title">Recommended</h2>
+        <div class="recommended-product-list">
+            <div class="recommended-product-box">
+                <img src="assets/img3.jpg" alt="Item Image">
+                <div class="recommended-product-inside-box">
+                    <h3>Item Name</h3>
+                    <p>Item Description</p>
+                    <span class="price">$100</span>
+                    <button class="love-btn"><i class="far fa-heart"></i></button>
+                </div>
+            </div>
+            <div class="recommended-product-box">
+                <img src="assets/abstract_4.jpg" alt="Item Image">
+                <div class="recommended-product-inside-box">
+                    <h3>Item Name</h3>
+                    <p>Item Description</p>
+                    <span class="price">$200</span>
+                    <button class="love-btn"><i class="far fa-heart"></i></button>
+                </div>
+            </div>
+            <div class="recommended-product-box">
+                <img src="assets/abstract_3.webp" alt="Item Image">
+                <div class="recommended-product-inside-box">
+                    <h3>Item Name</h3>
+                    <p>Item Description</p>
+                    <span class="price">$300</span>
+                    <button class="love-btn"><i class="far fa-heart"></i></button>
+                </div>
+            </div>
+            <div class="recommended-product-box">
+                <img src="assets/abstract_1.webp" alt="Item Image">
+                <div class="recommended-product-inside-box">
+                    <h3>Item Name</h3>
+                    <p>Item Description</p>
+                    <span class="price">$200</span>
+                    <button class="love-btn"><i class="far fa-heart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <hr class="footer-divider">
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Maison D'Art</h4>
+                <ul>
+                    <li>About Us</li>
+                    <li>Blog</li>
+                    <li>Careers</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li>FAQs</li>
+                    <li>Privacy Policy</li>
+                    <li>Delivery</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul class="social-icons">
+                    <li><i class="fab fa-instagram"></i></li>
+                    <li><i class="fab fa-twitter"></i></li>
+                    <li><i class="fab fa-tiktok"></i></li>
+                    <li><i class="fab fa-facebook"></i></li>
+                </ul>
+            </div>
+        </div>
+    </footer>        
+    <script src="js/home.js"></script>
+</body>

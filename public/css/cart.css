@@ -1,0 +1,246 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2b0202;
+
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #450A0A;
+    color: #F4EDE8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.HeaderLogo {
+    font-family: 'Montaga', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 40px;
+}
+
+.HeaderNav {
+    display: flex;
+    gap: 20px;
+}
+
+.NavLink {
+    color: #F4EDE8;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.NavLink:hover {
+    text-decoration: underline;
+}
+
+.HeaderSearch {
+    flex-grow: 1;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.SearchInput {
+    width: 100%;
+    max-width: 650px;
+    height: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 1px solid #F4EDE8;
+    color: #370C0C;
+    font-size: 10px;
+}
+
+.SearchInput:focus {
+    background-color: #F4EDE8;
+}
+
+.HeaderIcons {
+    display: flex;
+    gap: 20px;
+}
+
+.Icon {
+    width: 30px;
+    height: 30px;
+    background-color: #F4EDE8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.Icon::before {
+    content: '';
+    font-size: 18px;
+    color: #370C0C;
+}
+
+.CartIcon::before {
+    content: '🛒';
+}
+
+.MessageIcon::before {
+    content: '✉️';
+}
+
+.ProfileIcon::before {
+    content: '👤';
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.body-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-page{
+    width: 85%;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+.cart-text{
+    color: #d9d9d9;
+}
+.ruler{
+    display: flex;
+}
+.item-ruler{
+    width: 50%;
+    height: 700px;
+}
+
+.item-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 600px;
+    padding-bottom: 20px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+.store-info{
+    width: 550px;
+    display: flex;
+    justify-content: left;
+}
+.item-info{
+    width: 550px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.item-image{
+    width: 190px;
+    height: 220px;
+}
+.item-detail{
+    height: 220px;
+    margin-left: 10px;
+}
+.item-name{
+    color: #450A0A;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-family: 'montaga';
+}
+.item-desc{
+    color: #450A0A;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-family: 'montaga';
+}
+.item-price{
+    color: #450A0A;
+    font-weight: bold;
+    font-size: 22px;
+    font-family: 'montaga';
+}
+.delete-btn{
+    margin-top: 30px;
+    width: 150px;
+    background-color: #d9d9d9;
+    opacity: 0.6;
+    border-radius: 5px;
+}
+.delete-btn:hover{
+    background-color: #2b0202;
+    opacity: 1;
+    color: #F4EDE8;
+}
+
+.summary-ruler{
+    width: 50%;
+    height: 700px;
+}
+.summary-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding-bottom: 20px;
+    width: 650px;
+    background-color: #d9d9d9;
+    margin-top: 30px;
+    border-radius: 10px;
+    position: fixed;
+}
+.payment-summary{
+    width: 550px;
+}
+.item-section{
+    width: 550px;
+    height: auto;
+    display: flex;
+}
+.item-section-info{
+    display: flex;
+    width: 550px;
+}
+.item-section-header{
+    width: 33%;
+    font-size: 15px;
+}
+.total-price{
+    margin-top: 40px;
+    width: 550px;
+    display: flex;
+}
+.text-total{
+    width: 66%;
+}
+.number{
+    width: 33%;
+}
+#checkoutBtn{
+    margin-top: 20px;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #2b0202;
+    color: #d9d9d9;
+}
+#checkoutBtn:hover{
+    background-color: #d9d9d9;
+    color: #2b0202;
+}
+

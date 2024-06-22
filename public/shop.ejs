@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="css/shop.css">
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="Header">
+        <a href="/home" class="HeaderLogo">MaisonD'art</a>
+        <nav class="HeaderNav">
+            <a href="/shop" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <a href="/cart">
+                <div class="Icon CartIcon"></div>
+            </a>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+    <div class="main-body">
+        <div class="body-page">
+            <div class="galery-page">
+                <div class="gallery">Gallery</div>
+                <div class="dropdown">
+                    <!-- Update the filter options with data-category attributes -->
+                    <select name="filter" id="filter">
+                        <option value="Featured This Month">Featured This Month</option>
+                        <option value="All">All</option>
+                        <option value="Literature" data-category="C2">Literature</option>
+                        <option value="Sculpture" data-category="C3">Sculpture</option>
+                        <option value="Painting" data-category="C1">Painting</option>
+                    </select>
+                </div>
+            </div>
+            <div class="product-box">
+                <% products.forEach(product => { %>
+                    <a href="/product/<%= product.ProductID %>">
+                        <div class="product-frame">
+                            <img src="<%= product.ProductImage %>" class="product-image" alt="<%= product.ProductName %>">
+                            <div class="product-description">
+                                <div class="name"><%= product.ProductName %></div>
+                                <div class="desc"><%= product.ProductDescription %></div>
+                                <div class="product-wishlist">
+                                    <div class="price">Rp. <%= product.ProductPrice %></div>
+                                    <div class="circle">
+                                        <div class="heart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+            <div class="pagination">
+                <% if (currentPage > 1) { %>
+                    <a href="/shop?page=<%= currentPage - 1 %>">&laquo; Previous</a>
+                <% } %>
+                
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                    <a href="/shop?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+                <% } %>
+                
+                <% if (currentPage < totalPages) { %>
+                    <a href="/shop?page=<%= currentPage + 1 %>">Next &raquo;</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Maison D'Art</h4>
+                <ul>
+                    <li>About Us</li>
+                    <li>Blog</li>
+                    <li>Careers</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li>FAQs</li>
+                    <li>Privacy Policy</li>
+                    <li>Delivery</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul class="social-icons">
+                    <li><i class="fab fa-instagram"></i></li>
+                    <li><i class="fab fa-twitter"></i></li>
+                    <li><i class="fab fa-tiktok"></i></li>
+                    <li><i class="fab fa-facebook"></i></li>
+                </ul>
+            </div>
+        </div>
+    </footer> 
+    <script src="js/shop.js"></script>
+</body>
+</html>

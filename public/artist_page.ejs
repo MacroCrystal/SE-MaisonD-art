@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= artist.artistName %> - Artist Page</title>
+    <link rel="stylesheet" href="/css/artist_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="Header">
+        <div class="HeaderLogo">MaisonD'art</div>
+        <nav class="HeaderNav">
+            <a href="#" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <div class="Icon CartIcon"></div>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-body">
+        <div class="profile-background"></div>
+        <div class="ArtistPage">
+            <div class="box">
+                <img src="<%= artist.artistImage %>" alt="Artist Picture" class="shop-picture">
+                <div class="inner-box">
+                    <div class="shop-info">
+                        <div class="shop-name"><%= artist.artistName %></div>
+                        <div class="content-container">
+                            <!-- Add buttons and stats here -->
+                            <div class="button-container">
+                                <button class="follow-button" id="followBtn">+ Follow</button>
+                                <button class="chat-button">Chat</button>
+                            </div>
+                            <div class="stats-container">
+                                <div class="rating-review">
+                                    <!-- Example rating and review -->
+                                    <div class="number">4.5</div>
+                                    <div class="text">Rating & Review</div>
+                                </div>
+                                <div class="product-sold">
+                                    <!-- Example product sold count -->
+                                    <div class="number">50</div>
+                                    <div class="text">Product Sold</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Display products by the artist -->
+            <div class="product-box">
+                <% artist.products.forEach(product => { %>
+                <a href="/product/<%= product.productID %>"> <!-- Adjust the URL as per your route -->
+                    <div class="product-frame">
+                        <img src="<%= product.productImage %>" class="product-image" alt="<%= product.productName %>">
+                        <div class="product-description">
+                            <div class="name"><%= product.productName %></div>
+                            <div class="desc"><%= product.productDescription %></div>
+                            <div class="product-wishlist">
+                                <div class="price">Rp. <%= product.productPrice %></div>
+                                <div class="circle">
+                                    <div class="heart"><i class="fas fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <!-- Footer content -->
+    </footer>
+
+    <script src="js/artist_page.js"></script>
+
+</body>
+</html>

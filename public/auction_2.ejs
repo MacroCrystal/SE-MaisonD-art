@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/auction_2.css">
+</head>
+<body>
+    <header class="Header">
+        <a href="/home" class="HeaderLogo">MaisonD'art</a>
+        <nav class="HeaderNav">
+            <a href="/shop" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <a href="/cart">
+                <div class="Icon CartIcon"></div>
+            </a>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+    <div class="body-page">
+        <div class="main-page">
+            <div class="end">
+                <div id="countdown"></div>
+            </div>
+            <div class="auction-box">
+                <% auctions.forEach(auction => { %>
+                <div class="box">
+                    <div class="highest-text">Current</div>
+                    <div class="highest"><%= auction.bidPrice %></div>
+                    <div class="auction-image" data-product-id="<%= auction.productID %>" style="background-image: url('<%= auction.productImage %>');"></div>
+                    <div class="stick"></div>
+                </div>
+                <% }); %>
+            </div>
+            <div class="bidder-box"></div>
+        </div>
+    </div>
+
+    <!-- Popup form -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Place Your Bid</h2>
+            <form id="bid-form">
+                <input type="number" id="bid-amount" name="bid-amount" required>
+                <button type="submit">Submit Bid</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auction_2.js"></script>
+</body>
+</html>

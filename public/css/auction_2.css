@@ -1,0 +1,234 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2b0202;
+    color: #F4EDE8;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #450A0A;
+    color: #F4EDE8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.HeaderLogo {
+    font-family: 'Montaga', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 40px;
+}
+
+.HeaderNav {
+    display: flex;
+    gap: 20px;
+}
+
+.NavLink {
+    color: #F4EDE8;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.NavLink:hover {
+    text-decoration: underline;
+}
+
+.HeaderSearch {
+    flex-grow: 1;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.SearchInput {
+    width: 100%;
+    max-width: 650px;
+    height: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 1px solid #F4EDE8;
+    color: #370C0C;
+    font-size: 10px;
+}
+
+.SearchInput:focus {
+    background-color: #F4EDE8;
+}
+
+.HeaderIcons {
+    display: flex;
+    gap: 20px;
+}
+
+.Icon {
+    width: 30px;
+    height: 30px;
+    background-color: #F4EDE8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.Icon::before {
+    content: '';
+    font-size: 18px;
+    color: #370C0C;
+}
+
+.CartIcon::before {
+    content: '🛒';
+}
+
+.MessageIcon::before {
+    content: '✉️';
+}
+
+.ProfileIcon::before {
+    content: '👤';
+}
+.body-page{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.main-page{
+    margin-top: 10px;
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.auction-box{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    
+}
+.box{
+    width: 150px;
+    height: 590px;
+    margin: 30px 30px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+.stick{
+    width: 125px;
+    height: 220px;
+    background-color: #F4EDE8;
+    border-radius: 30px 30px 0px 0px;
+}
+
+.auction-image{
+    width: 150px;
+    height: 190px;
+    background-color: #2b0202;
+    margin-bottom: 30px;
+    animation: plane 4s ease-in infinite;
+    border-radius: 10px;
+    transition: 0.5s ease;
+    box-shadow: 0 0px 10px #F4EDE8;
+    background-size: cover;
+    background-position: center;
+}
+.highest-text{
+    animation: plane 4s ease-in infinite;
+    margin-bottom: 5px;
+}
+.highest{
+    margin-bottom: 10px;
+    animation: plane 4s ease-in infinite;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    text-decoration: wavy;
+    box-shadow: 0 0px 10px #F4EDE8;
+    border-radius: 5px;
+}
+.auction-image:hover{
+    width: 195px;
+    height: 247px;
+    box-shadow: 0 0px 100px #F4EDE8;
+}
+.bidder-box{
+    width: 100%;
+    height: 50px;
+    background-color: #F4EDE8;
+    border-radius: 10px 10px 0px 0px;
+}
+.text{
+    color: #2b0202;
+}
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    border-radius: 10px;
+    color: #2b0202;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#bid-form{
+    display: flex;
+    flex-direction: column;
+}
+#bid-amount{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+@keyframes plane{
+    0% {
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-30px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}

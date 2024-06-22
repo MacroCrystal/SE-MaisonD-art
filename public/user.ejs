@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="Header">
+        <a href="/home" class="HeaderLogo">MaisonD'art</a>
+        <nav class="HeaderNav">
+            <a href="/shop" class="NavLink">Gallery</a>
+        </nav>
+        <div class="HeaderSearch">
+            <input type="text" class="SearchInput" placeholder="Search in Maison D'art">
+        </div>
+        <div class="HeaderIcons">
+            <a href="/cart">
+                <div class="Icon CartIcon"></div>
+            </a>
+            <div class="Icon MessageIcon"></div>
+            <a href="/profile">
+                <div class="Icon ProfileIcon"></div>
+            </a>
+        </div>
+    </header>
+    <div class="container light-style flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-4">
+            Account settings
+        </h4>
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change password</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">Orders</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
+                            <form id="profileForm">
+                                <div class="card-body media align-items-center">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt class="d-block ui-w-80">
+                                    <div class="media-body ml-4">
+                                        <label class="btn btn-outline-primary">
+                                            Upload new photo
+                                            <input type="file" class="account-settings-fileinput">
+                                        </label> &nbsp;
+                                        <button type="button" id="logoutButton" class="btn btn-default md-btn-flat">Log out</button>
+                                        <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                                    </div>
+                                </div>
+                                <hr class="border-light m-0">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" id="userName" class="form-control" value="<%= user.userName %>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">E-mail</label>
+                                        <input type="text" id="userEmail" class="form-control mb-1" value="<%= user.userEmail %>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="text" id="userPhoneNumber" name="userPhoneNumber" class="form-control" value="<%= user.userPhoneNumber %>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Address</label>
+                                        <input type="text" id="userAddress" name="userAddress" class="form-control" value="<%= user.userAddress %>">
+                                    </div>
+                                </div>
+                                <div class="text-right mt-3">
+                                    <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>&nbsp;
+                                    <button type="button" class="btn btn-default" onclick="window.location.href='/profile'">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="account-change-password">
+                            <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Current password</label>
+                                    <input type="password" id="currentPassword" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">New password</label>
+                                    <input type="password" id="newPassword" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Repeat new password</label>
+                                    <input type="password" id="repeatNewPassword" class="form-control">
+                                </div>
+                                <div class="text-right mt-3">
+                                    <button type="button" id="changePasswordButton" class="btn btn-primary">Change Password</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="account-notifications">
+                            <% orders.forEach(order => { %>
+                            <div class="order-box">
+                                <% order.products.forEach(product => { %>
+                                <div class="item-box">
+                                    <div class="item-image">
+                                        <img class="product-image" src="<%= product.productImage %>" alt="<%= product.productName %>">
+                                    </div>
+                                    <div class="item-info">
+                                        <div class="item-name"><%= product.productName %></div>
+                                        <div class="item-desc"><%= product.productDescription %></div>
+                                        <div class="item-price">Rp. <%= product.productPrice %></div>
+                                    </div>
+                                    <div class="status-info">
+                                        <div class="status-text"><%= order.orderStatus %></div>
+                                    </div>
+                                </div>
+                                <% }); %>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/user.js"></script>
+</body>
+
+</html>
